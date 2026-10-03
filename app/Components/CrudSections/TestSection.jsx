@@ -12,6 +12,8 @@
  * - handleTest: Makes the test API call and displays the result
  */
 
+"use client";
+
 import React, { useCallback, useState } from 'react';
 import { testApi } from '../../services/apiService';
 

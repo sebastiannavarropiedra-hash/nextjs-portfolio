@@ -17,6 +17,8 @@
  * Note: The API response returns dados as an array, we extract [0]
  */
 
+"use client";
+
 import React, { useState } from 'react';
 import { getUsuarioById } from '../../services/apiService';
 

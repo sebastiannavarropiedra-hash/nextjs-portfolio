@@ -14,6 +14,8 @@
  * - useEffect on mount: Automatically fetches all users
  */
 
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import { getUsuarios } from '../../services/apiService';
 
