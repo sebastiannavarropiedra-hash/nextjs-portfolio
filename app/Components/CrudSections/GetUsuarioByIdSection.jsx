@@ -1,0 +1,123 @@
+/**
+ * GetUsuarioByIdSection Component
+ * 
+ * Search for a specific user by ID and display their details in a table.
+ * Requires user input (ID) before fetching.
+ * Shows error if user not found.
+ * 
+ * State:
+ * - userId: The ID entered by the user
+ * - usuario: Single user object returned from search
+ * - loading: Boolean tracking search status
+ * - error: Error message if search fails or user not found
+ * 
+ * Functions:
+ * - handleSearch: Fetches user data by ID and handles responses
+ * 
+ * Note: The API response returns dados as an array, we extract [0]
+ */
+
+import React, { useState } from 'react';
+import { getUsuarioById } from '../../services/apiService';
+
+export function useGetUsuarioByIdSection() {
+  const [userId, setUserId] = useState('');
+  const [usuario, setUsuario] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+
+
+  const handleSearch = async (e) => {
+
+        e.preventDefault();
+
+        if (!userId) return null;
+
+        setLoading(true);
+        setError(null);
+
+        try {
+
+            const data = await getUsuarioById(userId);
+
+            const usuarioEncontrado =
+                Array.isArray(data.datos)
+                    ? data.datos[0]
+                    : data.datos || data;
+
+            setUsuario(usuarioEncontrado || null);
+
+            if (!usuarioEncontrado) {
+                setError("Usuario no encontrado");
+                return null;
+            }
+
+            return usuarioEncontrado;
+
+        } catch (err) {
+
+            console.error(err);
+
+            setError("Failed to fetch user");
+            setUsuario(null);
+
+            return null;
+
+        } finally {
+
+            setLoading(false);
+
+        }
+    };
+
+  return { userId, setUserId, usuario, loading, error, handleSearch };
+}
+/*  (
+    <section className="crud-section">
+      <h2 className="section-title">-GET /usuarios/:id-</h2>
+      <p className="route-description">Retrieve a single user by ID</p>
+      <form onSubmit={handleSearch} className="crud-form">
+        <input
+          type="number"
+          placeholder="Enter User ID"
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
+          required
+        />
+        <button type="submit" disabled={loading} className="crud-btn">
+          {loading ? "Searching..." : "Search User"}
+        </button>
+      </form>
+
+      {error && <p className="error-message">{error}</p>}
+
+      {usuario && (
+        <div className="table-container">
+          <table className="users-table">
+            <thead>
+              <tr>
+               <th>ID usuario</th>
+                <th>Nombre</th>
+                <th>ID Perfil</th>
+                <th>Credencial</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{usuario.ID_Usuario}</td>
+                <td>{usuario.Nombre_Usuario}</td>
+                <td>{usuario.ID_Perfil}</td>
+                <td>{usuario.Credencial_Espacial}</td>
+                <td>{usuario.Estado ? "Activo" : "Inactivo"}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+  ) */
+export default function GetUsuarioByIdSection() {
+  return null;
+}
