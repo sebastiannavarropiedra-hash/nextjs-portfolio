@@ -16,7 +16,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getUsuarios } from '../../services/apiService';
 
 export function useGetUsuariosSection() {
@@ -25,27 +25,47 @@ export function useGetUsuariosSection() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const data = await getUsuarios();
+        if (isMounted) {
+          setUsuarios(data.datos || []);
+          setError(null);
+        }
+      } catch (err) {
+        console.error(err);
+        if (isMounted) {
+          setError("Failed to fetch users");
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
     fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  const fetchData = async () => {
-    setLoading(true);
+  return { usuarios, loading, error, fetchData: async () => {
     try {
       const data = await getUsuarios();
-
-
-
-setUsuarios(data.datos || []);
-
+      setUsuarios(data.datos || []);
       setError(null);
     } catch (err) {
       console.error(err);
       setError("Failed to fetch users");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
-  };
-
-  return { usuarios, loading, error, fetchData,setUsuarios };
+  }, setUsuarios };
 }
 /* <section className="crud-section">
   <h2 className="section-title">-GET /usuarios-</h2>

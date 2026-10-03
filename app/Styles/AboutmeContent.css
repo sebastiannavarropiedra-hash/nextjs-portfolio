@@ -1,0 +1,346 @@
+.AboutmeContentContainerone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    overflow-x: hidden;
+    padding: 1rem;
+    margin: 2rem;
+}
+
+.Aboutmefirstarea {
+    flex: 1;
+    margin: 2rem;
+}
+
+.AboutmeSecondarea {
+    flex: 1;
+}
+
+.AboutmeTitle {
+    font-size: 3rem;
+    margin: 1rem;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ffb627 50%, #ff8c42 75%, #ff6b35 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    animation: gradientFlowAbout 6s ease infinite;
+}
+
+.AboutmeDescription {
+    font-size: 0.9rem;
+    text-align: justify;
+    color: #2d3436;
+    line-height: 1.8;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(255, 184, 39, 0.08));
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 5px solid #ff6b35;
+    transition: all 0.3s ease;
+}
+
+.AboutmeImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+
+.AboutmeImageWrapper {
+    width: 22em;
+    height: 22em;
+    border-radius: 10%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.AboutmeImageWrapper img {
+    border: 3px dotted transparent;
+    border-radius: 10%;
+    animation: border-smooth 2s infinite linear;
+}
+
+.AboutmeImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.AboutmeContentContainertwo {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.AboutmeContentContainerThree {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.AboutmeThirdarea {
+    flex: 1;
+}
+
+.AboutmeFourtharea {
+    flex: 1;
+}
+
+.Aboutmeskillsleft {
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 4px;
+    color: #ff7a1a;
+    text-transform: uppercase;
+}
+
+.Aboutmeskillsleft:hover {
+    transform: translateY(-5px);
+    border-color: #ff7a1a;
+    box-shadow:
+        0 10px 30px rgba(255, 122, 26, 0.2);
+    color: #ff7a1a;
+    background-color: rgba(255, 122, 26, 0.2);
+
+}
+
+.Aboutmeskillsright {
+    width: 100%;
+}
+
+
+
+
+.experience-item {
+    position: relative;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    padding-bottom: 3rem;
+}
+
+/* DOT */
+.experience-item::before {
+    content: "";
+    position: absolute;
+    left: -2rem;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d8d8d8;
+}
+
+/* ACTIVE DOT */
+.experience-item.active::before {
+    background: #ff7a1a;
+}
+
+/* LEFT CONTENT */
+.experience-left h3 {
+    margin: 0;
+    text-align: left;
+    font-size: 1rem;
+
+    font-weight: 700;
+
+}
+
+.experience-left:hover h3 {
+    transform: translateY(-5px);
+
+    border-color: #ff7a1a;
+    background-color: rgba(255, 122, 26, 0.2);
+    box-shadow:
+        0 10px 30px rgba(255, 122, 26, 0.2);
+
+    color: #ff7a1a;
+
+}
+
+.experience-left span {
+    font-weight: 400;
+    color: #777;
+}
+
+.experience-left p {
+    margin-top: 0.5rem;
+    text-align: left;
+    color: #b0b0b0;
+
+    font-size: 0.8rem;
+
+    line-height: 1.6;
+}
+
+/* RIGHT DATE */
+.experience-date {
+    white-space: nowrap;
+
+    color: #8a8a8a;
+
+    font-size: 1rem;
+
+    margin-top: 0.3rem;
+}
+
+
+.AboutmeFourtharea {
+    flex: 3;
+}
+
+/* Education list spacing */
+.education-list .list-group-item {
+    margin-bottom: 1rem;
+    border: 1px solid #e9e9e9;
+}
+
+.education-list .list-group-item strong {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.education-item {
+    position: relative;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    padding-bottom: 3rem;
+}
+
+/* DOT */
+.education-item::before {
+    content: "";
+
+    position: absolute;
+
+    left: -2rem;
+    top: 8px;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #d8d8d8;
+}
+
+/* ACTIVE DOT */
+.education-item.active::before {
+    background: #ff7a1a;
+}
+
+/* LEFT CONTENT */
+.education-left h3 {
+    margin: 0;
+    text-align: left;
+    font-size: 1rem;
+
+    font-weight: 700;
+
+}
+
+.education-left:hover h3 {
+    transform: translateY(-5px);
+    border-color: #ff7a1a;
+    background-color: rgba(255, 122, 26, 0.2);
+    box-shadow:
+        0 10px 30px rgba(255, 122, 26, 0.2);
+    color: #ff7a1a;
+
+}
+
+.education-left span {
+    font-weight: 400;
+
+    color: #777;
+}
+
+.education-left p {
+    margin-top: 0.5rem;
+    text-align: left;
+    color: #b0b0b0;
+
+    font-size: 0.8rem;
+
+    line-height: 1.6;
+}
+
+/* RIGHT DATE */
+.education-date {
+    white-space: nowrap;
+
+    color: #8a8a8a;
+
+    font-size: 1rem;
+
+    margin-top: 0.3rem;
+}
+
+@keyframes border-smooth {
+    0% {
+        border-color: #ff6b35 transparent transparent transparent;
+    }
+
+    12.5% {
+        border-color: #ff6b35 #ff6b35 transparent transparent;
+    }
+
+    /* transición abajo→derecha */
+    25% {
+        border-color: transparent #ff6b35 transparent transparent;
+    }
+
+    37.5% {
+        border-color: transparent #ff6b35 #ffb627 transparent;
+    }
+
+    /* transición derecha→arriba */
+    50% {
+        border-color: transparent transparent #ffb627 transparent;
+    }
+
+    62.5% {
+        border-color: transparent transparent #ffb627 #f7931e;
+    }
+
+    /* transición arriba→izquierda */
+    75% {
+        border-color: transparent transparent transparent #f7931e;
+    }
+
+    87.5% {
+        border-color: #ff6b35 transparent transparent #f7931e;
+    }
+
+    /* transición izquierda→abajo */
+    100% {
+        border-color: #ff6b35 transparent transparent transparent;
+    }
+}
+
+@keyframes gradientFlowAbout {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

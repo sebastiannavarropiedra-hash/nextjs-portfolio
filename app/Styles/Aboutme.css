@@ -1,0 +1,10 @@
+.AboutmeContainer {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.AboutmeContent {
+    flex: 1;
+}

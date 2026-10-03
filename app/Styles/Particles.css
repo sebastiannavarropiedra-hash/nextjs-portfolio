@@ -1,0 +1,65 @@
+.particlesContainer {
+    width: 100%;
+    height: 100%;
+    /* full screen background */
+    display: flex;
+    overflow: hidden;
+    position: absolute;
+    /* sits behind content */
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* ensures it's behind everything */
+    flex-direction: column;
+    justify-content: center;
+    padding: 3vh 0 4vh 0;
+    box-sizing: border-box;
+    
+}
+
+.bubbles {
+    justify-content: space-evenly;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.bubbles span {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    background: #ff9f4361; /* naranja translúcido */
+    border-radius: 50%;
+    box-shadow: 
+        0 0 0 10px #ff9f4326,   /* halo suave */
+        0 0 50px #ff9f4361,     /* brillo medio */
+        0 0 100px #ff9f4361;    /* brillo extendido */
+    animation: animate 15s linear infinite;
+    animation-duration: calc(var(--i) * 3s);
+}
+
+.bubbles span:nth-child(even) {
+    background: #ffd27f4f; /* naranja claro translúcido */
+    box-shadow: 
+        0 0 0 10px #ffd27f14,   /* halo suave */
+        0 0 50px #ffd27f4f,     /* brillo medio */
+        0 0 100px #ffd27f4f;    /* brillo extendido */
+}
+
+
+@keyframes animate {
+    0% {
+        transform: translateY(100rem) scale(0);
+    }
+
+    100% {
+        transform: translateY(-100rem) scale(1);
+    }
+}
+
+@media (max-width: 767px) {
+    .bubbles span {
+        width: 15px;
+        height: 15px;
+    }
+}
