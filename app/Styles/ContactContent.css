@@ -1,124 +1,124 @@
 .ContactContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 4rem 2rem;
-    color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--title-color);
 }
 
 /* TITLE */
 .ContactContent h1 {
-    font-size: 4rem;
-    color: white;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    letter-spacing: -2px;
+  font-size: 4rem;
+  color: var(--title-color);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -2px;
 }
 
 /* DESCRIPTION */
 .ContactContent p {
-    max-width: 700px;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #b8b8b8;
-    margin-bottom: 3rem;
+  max-width: 700px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #b8b8b8;
+  margin-bottom: 3rem;
 }
 
 /* EMAIL LINK */
 .ContactContent p a {
-    color: #ff7a1a;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s ease;
+  color: #ff7a1a;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
 }
 
 .ContactContent p a:hover {
-    color: white;
+  color: white;
 }
 
 /* SOCIAL LIST */
 .ContactContent ul {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 0;
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
 }
 
 /* SOCIAL BUTTONS */
 .ContactContent ul li a {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 170px;
-    height: 55px;
-    border: 0.5px solid var(--bs-link-color-rgb);
-    border-radius: 17px;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    color: var(--bs-link-color-rgb);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 55px;
+  border: 0.5px solid var(--bs-link-color-rgb);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  color: var(--bs-link-color-rgb);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 /* HOVER EFFECT */
 .ContactContent ul li a:hover {
-    transform: translateY(-5px);
-    border-color: #ff7a1a;
-    box-shadow:
-        0 10px 30px rgba(255, 122, 26, 0.2);
-    color: #ff7a1a;
+  transform: translateY(-5px);
+  border-color: #ff7a1a;
+  box-shadow:
+    0 10px 30px rgba(255, 122, 26, 0.2);
+  color: #ff7a1a;
 }
 
 .ContactContent ul li a::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    /* ocupa todo el botón */
-    border-radius: 16px;
-    /* mismo radio que el botón */
-    padding: 2px;
-    /* grosor del borde */
-    background: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red);
-    --angle: 0deg;
-    animation: rotate 10s linear infinite;
-    border-image-slice: 1;
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* ocupa todo el botón */
+  border-radius: 16px;
+  /* mismo radio que el botón */
+  padding: 2px;
+  /* grosor del borde */
+  background: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red);
+  --angle: 0deg;
+  animation: rotate 10s linear infinite;
+  border-image-slice: 1;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
 
 @keyframes rotate {
-    to {
-        --angle: 360deg;
-    }
+  to {
+    --angle: 360deg;
+  }
 }
 
 @property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
 @media (max-width: 600px) {
-    .ContactContent {
-        padding: 0.5rem;
-    }
+  .ContactContent {
+    padding: 0.5rem;
+  }
 
 
 
 
 
-    .ContactContent ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .ContactContent ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 
@@ -127,12 +127,13 @@
   width: 100%;
   max-width: 560px;
   margin: 0 auto;
+  color: var(--title-color);
   padding: 28px;
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 14px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.04);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 /* Heading inside the form */
@@ -162,8 +163,8 @@
   width: 100%;
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.06);
-  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.25);
   color: #fff;
   font-size: 0.95rem;
   transition: border-color 140ms ease, box-shadow 140ms ease;
@@ -171,7 +172,7 @@
 }
 
 .form-control::placeholder {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* Textarea sizing */
@@ -183,14 +184,14 @@
 /* Focus state */
 .EmailForm .form-control:focus {
   outline: none;
-  border-color: rgba(255,122,26,0.95);
-  box-shadow: 0 6px 20px rgba(255,122,26,0.08);
+  border-color: rgba(255, 122, 26, 0.95);
+  box-shadow: 0 6px 20px rgba(255, 122, 26, 0.08);
 }
 
 /* Invalid state */
 .EmailForm .form-control.is-invalid {
-  border-color: rgba(239,68,68,0.95);
-  box-shadow: 0 6px 18px rgba(239,68,68,0.06);
+  border-color: rgba(239, 68, 68, 0.95);
+  box-shadow: 0 6px 18px rgba(239, 68, 68, 0.06);
 }
 
 /* Error text */
@@ -207,6 +208,7 @@
   font-size: 0.95rem;
   color: #34d399;
 }
+
 .EmailForm .text-danger.general {
   margin-top: 12px;
   font-size: 0.95rem;
@@ -228,14 +230,16 @@
   cursor: pointer;
   transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
 }
+
 .EmailForm .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
 }
+
 .EmailForm .btn:not(:disabled):hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255,122,26,0.18);
+  box-shadow: 0 10px 30px rgba(255, 122, 26, 0.18);
 }
 
 /* Small layout tweaks */
@@ -250,5 +254,8 @@
     padding: 18px;
     border-radius: 10px;
   }
-  .EmailForm h2 { font-size: 1.25rem; }
+
+  .EmailForm h2 {
+    font-size: 1.25rem;
+  }
 }

@@ -15,7 +15,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`h-full antialiased`}
-    >
+      >
+      <head>
+      <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossOrigin="anonymous" />
+      </head>
       <body id="root" className="Main">{children}<script
       src="https://kit.fontawesome.com/85576dcff4.js"
       ></script></body>

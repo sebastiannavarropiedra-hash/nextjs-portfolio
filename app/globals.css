@@ -42,37 +42,6 @@
   background-color: transparent;
 }
 
-.title,
-.AboutmeTitle,
-.AboutmeDescription {
-  color: var(--title-color);
-}
-
-.subtitle {
-  color: var(--subtitle-color);
-}
-
-.experience-left h3 {
-  color: var(--experience-left-h3-color);
-
-}
-
-.education-item h3 {
-  color: var(--education-h3-color);
-  font-weight: 600;
-  margin: 0.5rem 0;
-}
-
-.ContactContent h1 {
-  color: var(--title-color);
-}
-
-.EmailForm {
-
-  color: var(--title-color);
-
-}
-
 .dark-mode {
   --text: #ffffff;
   --text-h: #f3f4f6;

@@ -20,6 +20,7 @@
 .AboutmeTitle {
     font-size: 3rem;
     margin: 1rem;
+    color: var(--title-color);
     background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ffb627 50%, #ff8c42 75%, #ff6b35 100%);
     background-size: 300% 300%;
     -webkit-background-clip: text;
@@ -33,7 +34,7 @@
 .AboutmeDescription {
     font-size: 0.9rem;
     text-align: justify;
-    color: #2d3436;
+    color: var(--title-color);
     line-height: 1.8;
     background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(255, 184, 39, 0.08));
     padding: 1.5rem;
@@ -151,8 +152,9 @@
     margin: 0;
     text-align: left;
     font-size: 1rem;
-
-    font-weight: 700;
+    color: var(--experience-left-h3-color);
+    font-weight: 500;
+    
 
 }
 
@@ -250,8 +252,14 @@
     text-align: left;
     font-size: 1rem;
 
-    font-weight: 700;
+    font-weight: 500;
 
+}
+
+.education-item h3 {
+    color: var(--education-h3-color);
+    font-weight: 500;
+    margin: 0.5rem 0;
 }
 
 .education-left:hover h3 {

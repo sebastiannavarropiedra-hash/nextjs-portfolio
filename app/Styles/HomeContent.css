@@ -65,6 +65,14 @@
   background: linear-gradient(135deg, rgba(247, 147, 30, 0.08), rgba(255, 184, 39, 0.12));
 }
 
+.title {
+  color: var(--title-color);
+}
+
+.subtitle {
+  color: var(--subtitle-color);
+}
+
 .homepage-image-container {
   display: flex;
   justify-content: center;
