@@ -26,7 +26,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: -1.5px;
     animation: gradientFlowAbout 6s ease infinite;
 }
@@ -153,9 +153,13 @@
     text-align: left;
     font-size: 1rem;
     color: var(--experience-left-h3-color);
-    font-weight: 500;
+    font-weight: 700;
     
 
+}
+
+.experience-left h3 span {
+    font-weight: inherit;
 }
 
 .experience-left:hover h3 {
@@ -252,14 +256,18 @@
     text-align: left;
     font-size: 1rem;
 
-    font-weight: 500;
+    font-weight: 700;
 
 }
 
 .education-item h3 {
     color: var(--education-h3-color);
-    font-weight: 500;
+    font-weight: 700;
     margin: 0.5rem 0;
+}
+
+.education-item h3 strong {
+    font-weight: inherit;
 }
 
 .education-left:hover h3 {

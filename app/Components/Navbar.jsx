@@ -5,19 +5,14 @@ import Link from "next/link";
 import "../Styles/Navbar.css";
 
 export default function Navbar({ active }) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const savedTheme = localStorage.getItem("theme");
-    const enabled = savedTheme === "dark";
-    setDarkMode(enabled);
-    document.documentElement.classList.toggle("dark-mode", enabled);
+    setDarkMode(localStorage.getItem("theme") === "dark");
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (darkMode === null) return;
 
     document.documentElement.classList.toggle("dark-mode", darkMode);
     localStorage.setItem("theme", darkMode ? "dark" : "light");
@@ -41,7 +36,7 @@ export default function Navbar({ active }) {
               <Link href="/contact"><i className="fa-solid fa-envelope" aria-hidden="true"></i>Contact</Link>
             </li>
             <li className="theme-toggle">
-              <button type="button" className="btn" onClick={() => setDarkMode(!darkMode)}>
+              <button type="button" className="btn" onClick={() => setDarkMode((enabled) => !enabled)}>
                 {darkMode ? <i className="fa-solid fa-sun" aria-hidden="true"></i> : <i className="fa-solid fa-moon" aria-hidden="true"></i>}
               </button>
             </li>
