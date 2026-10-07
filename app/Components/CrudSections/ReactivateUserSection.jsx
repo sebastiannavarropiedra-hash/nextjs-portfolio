@@ -26,19 +26,15 @@ export function useReactivateUserSection() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
 
-  const handleReactivate = async (eventOrUserId) => {
-    if (typeof eventOrUserId?.preventDefault === 'function') {
-      eventOrUserId.preventDefault();
-    }
-
-    const id = typeof eventOrUserId === 'object' ? userId : eventOrUserId;
-    if (!id) return;
+  const handleReactivate = async (e) => {
+    e.preventDefault();
+    if (!userId) return;
 
     if (!window.confirm('Are you sure you want to reactivate this user?')) return;
 
     setLoading(true);
     try {
-      const data = await reactivarUsuario(id);
+      const data = await reactivarUsuario(userId);
       setResult(data);
       setUserId('');
     } catch (error) {

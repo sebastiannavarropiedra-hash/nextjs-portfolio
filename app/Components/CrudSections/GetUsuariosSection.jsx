@@ -30,11 +30,7 @@ export function useGetUsuariosSection() {
     setLoading(true);
     try {
       const data = await getUsuarios();
-
-
-
-setUsuarios(data.datos || []);
-
+      setUsuarios(data.datos || []);
       setError(null);
     } catch (err) {
       console.error(err);

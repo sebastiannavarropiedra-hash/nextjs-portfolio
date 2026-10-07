@@ -35,5 +35,3 @@ export function usePutUpdateSection() {
 
   return { formData, setFormData, loading, result, handleChange, handleSubmit };
 }
-
-export default function PutUpdateSection() { return null; }
