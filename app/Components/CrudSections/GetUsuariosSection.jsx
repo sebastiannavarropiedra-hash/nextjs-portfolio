@@ -14,9 +14,7 @@
  * - useEffect on mount: Automatically fetches all users
  */
 
-"use client";
-
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getUsuarios } from '../../services/apiService';
 
 export function useGetUsuariosSection() {
@@ -25,47 +23,27 @@ export function useGetUsuariosSection() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let isMounted = true;
-
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const data = await getUsuarios();
-        if (isMounted) {
-          setUsuarios(data.datos || []);
-          setError(null);
-        }
-      } catch (err) {
-        console.error(err);
-        if (isMounted) {
-          setError("Failed to fetch users");
-        }
-      } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
-      }
-    };
-
     fetchData();
-
-    return () => {
-      isMounted = false;
-    };
   }, []);
 
-  return { usuarios, loading, error, fetchData: async () => {
+  const fetchData = async () => {
+    setLoading(true);
     try {
       const data = await getUsuarios();
-      setUsuarios(data.datos || []);
+
+
+
+setUsuarios(data.datos || []);
+
       setError(null);
     } catch (err) {
       console.error(err);
       setError("Failed to fetch users");
-    } finally {
-      setLoading(false);
     }
-  }, setUsuarios };
+    setLoading(false);
+  };
+
+  return { usuarios, loading, error, fetchData,setUsuarios };
 }
 /* <section className="crud-section">
   <h2 className="section-title">-GET /usuarios-</h2>

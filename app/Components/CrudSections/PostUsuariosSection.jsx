@@ -16,8 +16,6 @@
  * - handleSubmit: Validates and sends user data to backend
  */
 
-"use client";
-
 import React, { useState } from 'react';
 import { crearUsuario } from '../../services/apiService';
 

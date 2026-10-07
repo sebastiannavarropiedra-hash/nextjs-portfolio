@@ -23,8 +23,6 @@
  * - Logico: Reversible, data preserved, can be reactivated
  */
 
-"use client";
-
 import React, { useState } from 'react';
 import { deleteFisico } from '../../services/apiService';
 

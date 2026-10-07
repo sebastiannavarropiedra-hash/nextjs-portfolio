@@ -22,8 +22,6 @@
  * - Fisico: Permanent, data deleted from database
  */
 
-"use client";
-
 import React, { useState } from 'react';
 import { deleteLogico } from '../../services/apiService';
 

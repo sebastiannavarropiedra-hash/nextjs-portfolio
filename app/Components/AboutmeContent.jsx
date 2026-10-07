@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import INFO from "../Data/user";
 import "../Styles/AboutmeContent.css";
 function AboutmeContent() {
@@ -17,7 +18,7 @@ function AboutmeContent() {
                 <div className="AboutmeSecondarea col-md-5">
                     <div className="AboutmeImageContainer">
                         <div className="AboutmeImageWrapper">
-                            <img src={INFO.about.selfie} alt="image not found" className="AboutmeImage" />
+                            <Image src={INFO.about.selfie} alt="Portrait of Sebastian" className="AboutmeImage" />
                         </div>
                     </div>
                 </div>

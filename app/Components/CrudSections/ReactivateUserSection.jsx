@@ -18,8 +18,6 @@
  * Logical delete deactivates, this reactivates
  */
 
-"use client";
-
 import React, { useState } from 'react';
 import { reactivarUsuario } from '../../services/apiService';
 

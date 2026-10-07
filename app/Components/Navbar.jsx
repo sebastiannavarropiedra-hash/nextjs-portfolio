@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import "../Styles/Navbar.css";
-import { Link } from "react-router-dom";
 
-const Navbar = (props) => {
-  const { active } = props;
-  const [darkMode, setDarkMode] = useState(() => {
-  return localStorage.getItem("theme") === "dark";
-});
+export default function Navbar({ active }) {
+  const [darkMode, setDarkMode] = useState(null);
 
-useEffect(() => {
-  document.documentElement.classList.toggle("dark-mode", darkMode);
-  localStorage.setItem("theme", darkMode ? "dark" : "light");
-}, [darkMode]);
+  useEffect(() => {
+    setDarkMode(localStorage.getItem("theme") === "dark");
+  }, []);
+
+  useEffect(() => {
+    if (darkMode === null) return;
+
+    document.documentElement.classList.toggle("dark-mode", darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
 
   return (
     <div className="nav-container">
@@ -19,20 +24,20 @@ useEffect(() => {
         <div className="nav-background">
           <ul className="nav-list">
             <li className={active === "Home" ? "nav-item active" : "nav-item"}>
-              <Link to="/"><i className="fa-solid fa-house"></i>Home</Link>
+              <Link href="/"><i className="fa-solid fa-house" aria-hidden="true"></i>Home</Link>
             </li>
             <li className={active === "Aboutme" ? "nav-item active" : "nav-item"}>
-              <Link to="/Aboutme"><i className="fa-solid fa-user"></i>About</Link>
+              <Link href="/Aboutme"><i className="fa-solid fa-user" aria-hidden="true"></i>About</Link>
             </li>
             <li className={active === "Projects" ? "nav-item active" : "nav-item"}>
-              <Link to="/Projects"><i className="fa-solid fa-briefcase"></i>Projects</Link>
+              <Link href="/Projects"><i className="fa-solid fa-briefcase" aria-hidden="true"></i>Projects</Link>
             </li>
             <li className={active === "Contact" ? "nav-item active" : "nav-item"}>
-              <Link to="/contact"><i className="fa-solid fa-envelope"></i>Contact</Link>
+              <Link href="/contact"><i className="fa-solid fa-envelope" aria-hidden="true"></i>Contact</Link>
             </li>
             <li className="theme-toggle">
-              <button type="button" className="btn"onClick={() => setDarkMode(!darkMode)}>
-                {darkMode ? <i className="fa-solid fa-sun"></i> : <i className="fa-solid fa-moon"></i>}
+              <button type="button" className="btn" onClick={() => setDarkMode((enabled) => !enabled)}>
+                {darkMode ? <i className="fa-solid fa-sun" aria-hidden="true"></i> : <i className="fa-solid fa-moon" aria-hidden="true"></i>}
               </button>
             </li>
           </ul>
@@ -40,6 +45,4 @@ useEffect(() => {
       </nav>
     </div>
   );
-};
-
-export default Navbar;
+}
