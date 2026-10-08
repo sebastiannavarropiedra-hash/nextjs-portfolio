@@ -20,6 +20,8 @@
   --education-h3-color: #000000;
   --experience-left-h3-color: #000000;
   --bs-link-color-rgb: #000000;
+  --bs-nav-link-color: #ff5e00;
+
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;

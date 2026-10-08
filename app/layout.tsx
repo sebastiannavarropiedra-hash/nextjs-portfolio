@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css';
@@ -23,9 +24,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossOrigin="anonymous" />
       </head>
-      <body id="root" className="Main">{children}<script
-      src="https://kit.fontawesome.com/85576dcff4.js"
-      ></script></body>
+      <body id="root" className="Main">
+        {children}
+        
+          <Script
+          src="https://kit.fontawesome.com/85576dcff4.js"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }

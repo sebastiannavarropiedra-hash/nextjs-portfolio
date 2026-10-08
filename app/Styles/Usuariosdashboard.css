@@ -74,3 +74,9 @@
 }
 
 .dashboard-table{padding:1%;}
+
+.nav-link{
+    color: #ff7a1a !important;
+    transition: color 0.3s ease;
+    
+}

@@ -22,8 +22,8 @@ export default function Navbar({ active }) {
     <div className="nav-container">
       <nav className="navbar">
         <div className="nav-background">
-          <ul className="nav-list">
-            <li className={active === "Home" ? "nav-item active" : "nav-item"}>
+          <ul className="nav-list Upperborder">
+            <li className={active === "Home" ? "nav-item active " : "nav-item"}>
               <Link href="/"><i className="fa-solid fa-house" aria-hidden="true"></i>Home</Link>
             </li>
             <li className={active === "Aboutme" ? "nav-item active" : "nav-item"}>

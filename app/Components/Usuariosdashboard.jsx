@@ -235,7 +235,7 @@ function UsuariosDashboard() {
                                 onSubmit={handleSearch}
                                 className="d-flex w-100 "
                             >
-                                <input
+                                <input id="SearchForm"
                                     className="form-control form-control-dark"
                                     type="number"
                                     placeholder="Enter User ID"
@@ -255,13 +255,7 @@ function UsuariosDashboard() {
 
                             </form>
 
-                            <div className="navbar-nav">
-                                <div className="nav-item text-nowrap">
-                                    <a className="nav-link px-3">
-                                        Sign out
-                                    </a>
-                                </div>
-                            </div>
+                           
 
                             <button
                                 className="navbar-toggler d-md-none collapsed"
