@@ -13,6 +13,7 @@ import { useDeleteLogicoSection } from "./CrudSections/DeleteLogicoSection";
 import { useDeleteFisicoSection } from "./CrudSections/DeleteFisicoSection";
 import { useReactivateUserSection } from "./CrudSections/ReactivateUserSection";
 import '../Styles/Usuariosdashboard.css';
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function UsuariosDashboard() {
     /* test api hook */
