@@ -1,27 +1,21 @@
-.dashboard-container {
-
+.projects-content.dashboard-container {
     padding: 2rem;
-
-    color: white;
+    min-height: 50vh;
 }
 
-.dashboard-title {
-
+.projects-content > .dashboard-title {
     font-size: 2rem;
-
+    color: var(--title-color);
     margin-bottom: 2rem;
 }
 
-
-
-/* CRUD Sections Layout */
-.crud-sections-container {
+.projects-content > .crud-sections-container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
-.crud-section {
+.projects-content > .crud-sections-container .crud-section {
     background: #1a1a1a;
     border: 1px solid #2a2a2a;
     border-radius: 12px;
@@ -29,27 +23,26 @@
     scroll-margin-top: 100px;
 }
 
-.section-title {
+.projects-content > .crud-sections-container .section-title {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     color: #fff;
 }
 
-.route-description {
+.projects-content > .crud-sections-container .route-description {
     font-size: 0.95rem;
     color: #999;
     margin-bottom: 1rem;
 }
 
-/* CRUD Form Styles */
-.crud-form {
+.projects-content > .crud-sections-container .crud-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
 
-.crud-form input {
+.projects-content > .crud-sections-container .crud-form input {
     padding: 0.75rem;
     border: 1px solid #2a2a2a;
     border-radius: 6px;
@@ -58,18 +51,17 @@
     font-size: 1rem;
 }
 
-.crud-form input::placeholder {
+.projects-content > .crud-sections-container .crud-form input::placeholder {
     color: #666;
 }
 
-.crud-form input:focus {
+.projects-content > .crud-sections-container .crud-form input:focus {
     outline: none;
     border-color: #0ea5e9;
     background: #0a0a0a;
 }
 
-/* Button Styles */
-.crud-btn {
+.projects-content > .crud-sections-container .crud-btn {
     background: #0ea5e9;
     color: white;
     border: none;
@@ -80,73 +72,57 @@
     margin: 0.5em;
 }
 
-.crud-btn:hover:not(:disabled) {
-   transform: translateY(-5px);
-
+.projects-content > .crud-sections-container .crud-btn:hover:not(:disabled) {
+    transform: translateY(-5px);
     border-color: #ff7a1a;
-
-    box-shadow:
-        0 10px 30px rgba(255, 122, 26, 0.2);
-
+    box-shadow: 0 10px 30px rgba(255, 122, 26, 0.2);
     color: #ff7a1a;
     background: #1a1a1a;
 }
 
-.crud-btn:disabled {
+.projects-content > .crud-sections-container .crud-btn:disabled {
     background: #64748b;
     cursor: not-allowed;
     opacity: 0.6;
 }
 
-.crud-btn.delete-btn {
+.projects-content > .crud-sections-container .crud-btn.delete-btn {
     background: #dc2626;
 }
 
-.crud-btn.delete-btn:hover:not(:disabled) {
-      transform: translateY(-5px);
-
+.projects-content > .crud-sections-container .crud-btn.delete-btn:hover:not(:disabled) {
+    transform: translateY(-5px);
     border-color: #ff7a1a;
-
-    box-shadow:
-        0 10px 30px rgba(255, 122, 26, 0.2);
-
+    box-shadow: 0 10px 30px rgba(255, 122, 26, 0.2);
     color: #ff7a1a;
     background: #1a1a1a;
 }
 
-.crud-btn.delete-btn.danger {
+.projects-content > .crud-sections-container .crud-btn.delete-btn.danger {
     background: #991b1b;
 }
 
-.crud-btn.delete-btn.danger:hover:not(:disabled) {
-      transform: translateY(-5px);
-
+.projects-content > .crud-sections-container .crud-btn.delete-btn.danger:hover:not(:disabled) {
+    transform: translateY(-5px);
     border-color: #ff7a1a;
-
-    box-shadow:
-        0 10px 30px rgba(255, 122, 26, 0.2);
-
+    box-shadow: 0 10px 30px rgba(255, 122, 26, 0.2);
     color: #ff7a1a;
     background: #1a1a1a;
 }
 
-.crud-btn.reactivate-btn {
+.projects-content > .crud-sections-container .crud-btn.reactivate-btn {
     background: #10b981;
 }
 
-.crud-btn.reactivate-btn:hover:not(:disabled) {
-  transform: translateY(-5px);
-
+.projects-content > .crud-sections-container .crud-btn.reactivate-btn:hover:not(:disabled) {
+    transform: translateY(-5px);
     border-color: #ff7a1a;
-
-    box-shadow:
-        0 10px 30px rgba(255, 122, 26, 0.2);
-
+    box-shadow: 0 10px 30px rgba(255, 122, 26, 0.2);
     color: #ff7a1a;
-    background: #1a1a1a;}
+    background: #1a1a1a;
+}
 
-/* Result Box */
-.result-box {
+.projects-content > .crud-sections-container .result-box {
     background: #0a0a0a;
     border: 1px solid #2a2a2a;
     border-radius: 6px;
@@ -158,8 +134,7 @@
     overflow-y: auto;
 }
 
-/* Error Message */
-.error-message {
+.projects-content > .crud-sections-container .error-message {
     color: #f87171;
     background: #7f1d1d;
     padding: 0.75rem;

@@ -42,6 +42,7 @@
 .Main {
   font-family: 'Roboto', sans-serif;
   background-color: transparent;
+  width: 100%;
 }
 
 .dark-mode {

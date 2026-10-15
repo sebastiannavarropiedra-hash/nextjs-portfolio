@@ -1,14 +1,25 @@
-.dashboard-header header {
-    width: 100%;
+.Dashboard-tabs {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.Dashboard-tabs .nav-item{
+    margin: 0;
 }
 
-
+.usuarios-main .dashboard-header header {
+    width: 100%;
+}
 
 .usuarios-main {
     padding: 0.5em;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.5);
     background-color: #1e1e1e;
+    color: white;
 }
 
 .usuarios-main i.fa-circle-dot {
@@ -19,64 +30,87 @@
     color: #ff7a1a;
 }
 
-.dashboard-content .dashboard-table {
-
+.usuarios-main .dashboard-content .dashboard-table {
     height: 50vh;
     overflow-y: auto;
 }
 
-.dashboard-sidebar {
+.usuarios-main .dashboard-sidebar {
     border-right: #ff7a1a 2px solid;
 }
 
-.table-container {
-
+.usuarios-main .table-container {
     overflow-x: auto;
 }
 
-.users-table {
-
+.usuarios-main .users-table {
     width: 100%;
-
     border-collapse: collapse;
-
-
-
     overflow: hidden;
 }
 
-.users-table th {
-
+.usuarios-main .users-table th {
     background: #1e1e1e;
-
     padding: 1rem;
-
     text-align: left;
 }
 
-.users-table td {
-
+.usuarios-main .users-table td {
     padding: 1rem;
-
     border-top: 1px solid #2a2a2a;
 }
 
-.users-table tr:hover {
-
+.usuarios-main .users-table tr:hover {
     background: #1c1c1c;
 }
-.dashboard-header .navbar{
+
+.usuarios-main .dashboard-header .navbar {
     justify-content: space-evenly;
     align-items: center;
 }
-.dashboard-header  .navbar-brand{
-  margin:1%;
+
+.usuarios-main .dashboard-header .navbar-brand {
+    margin: 1%;
 }
 
-.dashboard-table{padding:1%;}
+.usuarios-main .dashboard-table {
+    padding: 1%;
+}
 
-.nav-link{
+.usuarios-main .nav-link {
     color: #ff7a1a !important;
     transition: color 0.3s ease;
-    
+}
+
+.usuarios-main .crud-btn {
+    background: #0ea5e9;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.5em;
+}
+
+.usuarios-main .crud-btn:hover:not(:disabled) {
+    transform: translateY(-5px);
+    border-color: #ff7a1a;
+    box-shadow: 0 10px 30px rgba(255, 122, 26, 0.2);
+    color: #ff7a1a;
+    background: #1a1a1a;
+}
+
+.usuarios-main .crud-btn:disabled {
+    background: #64748b;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.usuarios-main .error-message {
+    color: #f87171;
+    background: #7f1d1d;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
 }
