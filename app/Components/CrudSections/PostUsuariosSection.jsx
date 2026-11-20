@@ -36,22 +36,27 @@ export function usePostUsuariosSection() {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (eventOrData) => {
+    const isFormEvent = typeof eventOrData?.preventDefault === 'function';
+    if (isFormEvent) eventOrData.preventDefault();
+    const userData = isFormEvent ? formData : eventOrData || formData;
     setLoading(true);
     try {
-      const data = await crearUsuario(formData);
+      const data = await crearUsuario(userData);
       setResult(data);
       setFormData({
         Nombre_Usuario: '',
         Credencial_Espacial: '',
         ID_Perfil: '',
       });
+      return data;
     } catch (error) {
       console.error(error);
-      setResult({ error: "Failed to create user" });
+      setResult({ error: error.message || "Failed to create user" });
+      throw error;
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return {

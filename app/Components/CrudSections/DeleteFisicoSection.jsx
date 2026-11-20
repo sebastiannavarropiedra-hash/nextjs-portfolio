@@ -31,24 +31,29 @@ export function useDeleteFisicoSection() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
 
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    if (!userId) return;
+  const handleDelete = async (eventOrId) => {
+    const isFormEvent = typeof eventOrId?.preventDefault === 'function';
+    if (isFormEvent) eventOrId.preventDefault();
+    const id = isFormEvent ? userId : eventOrId || userId;
+    if (!id) return false;
 
     if (!window.confirm('WARNING: This will permanently delete the user from the database. you could lose your job')) {
-      return;
+      return false;
     }
 
     setLoading(true);
     try {
-      const data = await deleteFisico(userId);
+      const data = await deleteFisico(id);
       setResult(data);
       setUserId('');
+      return true;
     } catch (error) {
       console.error(error);
-      setResult({ error: "Failed to delete user permanently" });
+      setResult({ error: error.message || "Failed to delete user permanently" });
+      throw error;
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return { userId, setUserId, loading, result, handleDelete };

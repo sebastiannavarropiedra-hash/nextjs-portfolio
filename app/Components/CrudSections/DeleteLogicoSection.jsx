@@ -30,22 +30,27 @@ export function useDeleteLogicoSection() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
 
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    if (!userId) return;
+  const handleDelete = async (eventOrId) => {
+    const isFormEvent = typeof eventOrId?.preventDefault === 'function';
+    if (isFormEvent) eventOrId.preventDefault();
+    const id = isFormEvent ? userId : eventOrId || userId;
+    if (!id) return false;
 
-    if (!window.confirm('Are you sure you want to mark this user as inactive(Wont appear on active users list)?')) return;
+    if (!window.confirm('Are you sure you want to mark this user as inactive(Wont appear on active users list)?')) return false;
 
     setLoading(true);
     try {
-      const data = await deleteLogico(userId);
+      const data = await deleteLogico(id);
       setResult(data);
       setUserId('');
+      return true;
     } catch (error) {
       console.error(error);
-      setResult({ error: "Failed to delete user logically" });
+      setResult({ error: error.message || "Failed to delete user logically" });
+      throw error;
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return { userId, setUserId, loading, result, handleDelete };

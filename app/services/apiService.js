@@ -14,6 +14,16 @@
 
 const API_BASE_URL = "https://backendportfolio-8r5l.onrender.com/api";
 
+const readResponse = async (response) => {
+  const data = await response.json().catch(() => null);
+
+  if (!response.ok || data?.error) {
+    throw new Error(data?.error || data?.message || `Request failed (${response.status})`);
+  }
+
+  return data;
+};
+
 /**
  * Test the API connection
  * Endpoint: GET /test
@@ -21,7 +31,7 @@ const API_BASE_URL = "https://backendportfolio-8r5l.onrender.com/api";
  */
 export const testApi = async () => {
   const response = await fetch(`${API_BASE_URL}/test`);
-  return response.json();
+  return readResponse(response);
 };
 
 /**
@@ -36,7 +46,7 @@ export const crearUsuario = async (userData) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
   });
-  return response.json();
+  return readResponse(response);
 };
 
 /**
@@ -46,7 +56,7 @@ export const crearUsuario = async (userData) => {
  */
 export const getUsuarios = async () => {
   const response = await fetch(`${API_BASE_URL}/usuarios`);
-  return response.json();
+  return readResponse(response);
 };
 
 /**
@@ -57,7 +67,7 @@ export const getUsuarios = async () => {
  */
 export const getUsuarioById = async (id) => {
   const response = await fetch(`${API_BASE_URL}/usuarios/${id}`);
-  return response.json();
+  return readResponse(response);
 };
 
 /**
@@ -72,7 +82,7 @@ export const updateUsuario = async (userData) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
   });
-  return response.json();
+  return readResponse(response);
 };
 
 /**
@@ -85,7 +95,7 @@ export const deleteLogico = async (id) => {
   const response = await fetch(`${API_BASE_URL}/usuarios/logico/${id}`, {
     method: "DELETE",
   });
-  return response.json();
+  return readResponse(response);
 };
 
 /**
@@ -97,7 +107,7 @@ export const reactivarUsuario = async (id) => {
   const response = await fetch(`${API_BASE_URL}/usuarios/reactivar/${id}`, {
     method: "PUT",
   });
-  return response.json();
+  return readResponse(response);
 };
 
 /**
@@ -110,11 +120,7 @@ export const deleteFisico = async (id) => {
   const response = await fetch(`${API_BASE_URL}/usuarios/fisico/${id}`, {
     method: "DELETE",
   });
-  return response.json();
-
-
-  
-  
+  return readResponse(response);
 };
 
  export async function sendEmail(emailData) {

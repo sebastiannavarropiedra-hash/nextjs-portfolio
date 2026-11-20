@@ -13,7 +13,7 @@ import { useDeleteLogicoSection } from "./CrudSections/DeleteLogicoSection";
 import { useDeleteFisicoSection } from "./CrudSections/DeleteFisicoSection";
 import { useReactivateUserSection } from "./CrudSections/ReactivateUserSection";
 import '../Styles/Usuariosdashboard.css';
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 
 function UsuariosDashboard() {
     /* test api hook */
@@ -21,8 +21,8 @@ function UsuariosDashboard() {
     /* CRUD hooks */
     const { usuarios = [], setUsuarios, loading: loadingGetUsuarios, handleGetUsuarios, error: errorGetUsuarios, fetchData: fetchUsuarios } = useGetUsuariosSection();
     const { userId, setUserId, usuario = [], loading: loadingGetUsuarioById, error: errorGetUsuarioById, handleSearch } = useGetUsuarioByIdSection();
-    const { result: resultPost, error: errorPost, formData: formDataPost, setFormData: setFormDataPost, handleChange: handleChangePost, handleSubmit: handleSubmitPost } = usePostUsuariosSection();
-    const { formData: formDataPut, setFormData: setFormDataPut, result: resultPut, handleChange: handleChangePut, handleSubmit: handleSubmitPut } = usePutUpdateSection();
+    const { loading: loadingPost, handleSubmit: handleSubmitPost } = usePostUsuariosSection();
+    const { loading: loadingPut, handleSubmit: handleSubmitPut } = usePutUpdateSection();
     const { userId: userIdDeleteLogico, setUserId: setUserIdDeleteLogico, handleDelete: handleDeleteLogico } = useDeleteLogicoSection();
     const { userId: userIdDeleteFisico, setUserId: setUserIdDeleteFisico, handleDelete: handleDeleteFisico } = useDeleteFisicoSection();
     const { result: resultReactivate, error: errorReactivate, handleReactivate: handleReactivateUser } = useReactivateUserSection();
@@ -121,11 +121,15 @@ function UsuariosDashboard() {
                 await handleSubmitPost(formData);
             }
             setIsFormOpen(false);
-            fetchUsuarios();
-            /* cerrar formulario y refrescar lista de usuarios */
+            setSelectedUsers([]);
+            try {
+                await fetchUsuarios();
+            } catch {
+                alert("User saved, but the user list could not be refreshed.");
+            }
         } catch (err) {
             console.error(err);
-            alert("Failed to save user");
+            alert(err.message || "Failed to save user");
         }
     };
 
@@ -133,7 +137,7 @@ function UsuariosDashboard() {
 
 
 
-    const handleDeactivateClick = () => {
+    const handleDeactivateClick = async () => {
         if (selectedUsers.length !== 1) {
             alert("Please select exactly one user to deactivate.");
             return;
@@ -144,13 +148,24 @@ function UsuariosDashboard() {
         );
 
         if (selectedUser) {
-            handleDeleteLogico(selectedUser.ID_Usuario)
-                .then(fetchUsuarios)
-                .then(() => { setSelectedUsers([]); }) // Clear selection after deactivation
+            try {
+                const completed = await handleDeleteLogico(selectedUser.ID_Usuario);
+                if (!completed) return;
+                setSelectedUsers([]);
+            } catch (error) {
+                console.error(error);
+                alert(error.message || "Failed to deactivate user");
+                return;
+            }
+            try {
+                await fetchUsuarios();
+            } catch {
+                alert("User deactivated, but the user list could not be refreshed.");
+            }
         }
     };
 
-    const handleReactivateClick = () => {
+    const handleReactivateClick = async () => {
         if (selectedUsers.length !== 1) {
             alert("Please select exactly one user to reactivate.");
             return;
@@ -161,11 +176,24 @@ function UsuariosDashboard() {
         );
 
         if (selectedUser) {
-            handleReactivateUser(selectedUser.ID_Usuario).then(fetchUsuarios).then(() => { setSelectedUsers([]); }) // Clear selection after reactivation
+            try {
+                const completed = await handleReactivateUser(selectedUser.ID_Usuario);
+                if (!completed) return;
+                setSelectedUsers([]);
+            } catch (error) {
+                console.error(error);
+                alert(error.message || "Failed to reactivate user");
+                return;
+            }
+            try {
+                await fetchUsuarios();
+            } catch {
+                alert("User reactivated, but the user list could not be refreshed.");
+            }
         }
     };
 
-    const handleDeleteClick = () => {
+    const handleDeleteClick = async () => {
         if (selectedUsers.length !== 1) {
             alert("Please select exactly one user to delete.");
             return;
@@ -176,7 +204,20 @@ function UsuariosDashboard() {
         );
 
         if (selectedUser) {
-            handleDeleteFisico(selectedUser.ID_Usuario).then(fetchUsuarios).then(() => { setSelectedUsers([]); }); // Clear selection after deletion
+            try {
+                const completed = await handleDeleteFisico(selectedUser.ID_Usuario);
+                if (!completed) return;
+                setSelectedUsers([]);
+            } catch (error) {
+                console.error(error);
+                alert(error.message || "Failed to delete user");
+                return;
+            }
+            try {
+                await fetchUsuarios();
+            } catch {
+                alert("User deleted, but the user list could not be refreshed.");
+            }
         }
     };
 
@@ -187,6 +228,10 @@ function UsuariosDashboard() {
     // []                                    -> dependency array is empty, so this effect runs only once, on mount (like componentDidMount).
 
     useEffect(() => { fetchUsuarios().catch(() => { }); }, []);
+
+    const handleRefreshUsuarios = () => {
+        fetchUsuarios().catch(() => { });
+    };
 
     useEffect(() => {
         // Check immediately when the component mounts
@@ -209,8 +254,9 @@ function UsuariosDashboard() {
 
 
 
-
-
+useEffect(() => {
+  import("bootstrap/dist/js/bootstrap.bundle.min.js");
+}, []);
 
     return (
         <>
@@ -378,8 +424,11 @@ function UsuariosDashboard() {
                                                     <button
                                                         type="submit"
                                                         className="btn btn-primary"
+                                                        disabled={loadingPost || loadingPut}
                                                     >
-                                                        {selectedUsers && selectedUsers.length > 0
+                                                        {loadingPost || loadingPut
+                                                            ? "Saving..."
+                                                            : selectedUsers && selectedUsers.length > 0
                                                             ? "Guardar"
                                                             : "Crear"}
                                                     </button>
@@ -451,7 +500,7 @@ function UsuariosDashboard() {
                                 <Tab eventKey="TablaActiva" title="Usuarios activos">
                                     <div className="dashboard-table">
                                         <div className="stats align-items-center d-flex justify-content-between p-2">
-                                            <button onClick={fetchUsuarios} disabled={loadingGetUsuarios} className="crud-btn">
+                                            <button onClick={handleRefreshUsuarios} disabled={loadingGetUsuarios} className="crud-btn">
                                                 {loadingGetUsuarios ? "Loading..." : "Refresh Users"}
                                             </button>
 
@@ -527,7 +576,7 @@ function UsuariosDashboard() {
                                 <Tab eventKey="TablaInactiva" title="Usuarios inactivos">
                                     <div className="dashboard-table col p-0 bg-dark">
                                         <div className="stats align-items-center d-flex justify-content-between p-2">
-                                            <button onClick={fetchUsuarios} disabled={loadingGetUsuarios} className="crud-btn">
+                                            <button onClick={handleRefreshUsuarios} disabled={loadingGetUsuarios} className="crud-btn">
                                                 {loadingGetUsuarios ? "Loading..." : "Refresh Users"}
                                             </button>
 

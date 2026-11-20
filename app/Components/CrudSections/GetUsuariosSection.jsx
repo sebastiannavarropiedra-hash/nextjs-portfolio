@@ -30,13 +30,17 @@ export function useGetUsuariosSection() {
     setLoading(true);
     try {
       const data = await getUsuarios();
-      setUsuarios(data.datos || []);
+      const users = Array.isArray(data?.datos) ? data.datos : [];
+      setUsuarios(users);
       setError(null);
+      return users;
     } catch (err) {
       console.error(err);
-      setError("Failed to fetch users");
+      setError(err.message || "Failed to fetch users");
+      throw err;
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return { usuarios, loading, error, fetchData,setUsuarios };

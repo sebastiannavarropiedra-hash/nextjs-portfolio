@@ -26,22 +26,27 @@ export function useReactivateUserSection() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
 
-  const handleReactivate = async (e) => {
-    e.preventDefault();
-    if (!userId) return;
+  const handleReactivate = async (eventOrId) => {
+    const isFormEvent = typeof eventOrId?.preventDefault === 'function';
+    if (isFormEvent) eventOrId.preventDefault();
+    const id = isFormEvent ? userId : eventOrId || userId;
+    if (!id) return false;
 
-    if (!window.confirm('Are you sure you want to reactivate this user?')) return;
+    if (!window.confirm('Are you sure you want to reactivate this user?')) return false;
 
     setLoading(true);
     try {
-      const data = await reactivarUsuario(userId);
+      const data = await reactivarUsuario(id);
       setResult(data);
       setUserId('');
+      return true;
     } catch (error) {
       console.error(error);
-      setResult({ error: "Failed to reactivate user" });
+      setResult({ error: error.message || "Failed to reactivate user" });
+      throw error;
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return {

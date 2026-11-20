@@ -19,15 +19,20 @@ export function usePutUpdateSection() {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (eventOrData) => {
+    const isFormEvent = typeof eventOrData?.preventDefault === 'function';
+    if (isFormEvent) eventOrData.preventDefault();
+    const userData = isFormEvent ? formData : eventOrData || formData;
     setLoading(true);
 
     try {
-      setResult(await updateUsuario(formData));
+      const data = await updateUsuario(userData);
+      setResult(data);
+      return data;
     } catch (error) {
       console.error(error);
-      setResult({ error: "Failed to update user" });
+      setResult({ error: error.message || "Failed to update user" });
+      throw error;
     } finally {
       setLoading(false);
     }
